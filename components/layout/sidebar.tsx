@@ -55,7 +55,7 @@ export const Sidebar = ({ className }: Props) => {
       <div className="p5 p10 hidden lg:block">logo</div>
       <ChevronLeft
         className={cn(
-          `absolute -right-3 top-10 z-10 cursor-pointer rounded-full border bg-background text-3xl text-foreground`,
+          `absolute -right-3 top-10 z-10 cursor-pointer rounded-full border border-foreground bg-background text-3xl text-foreground`,
           isMinimized && 'rotate-180'
         )}
         onClick={handleClick}
