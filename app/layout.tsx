@@ -3,6 +3,9 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
+import '../public/themes.css';
+import { ThemeProvider } from '@/components/theme/theme-provider';
+import ThemeWrapper from '@/components/theme/theme-wrapper';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -48,7 +51,9 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <ThemeWrapper>{children}</ThemeWrapper>
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
