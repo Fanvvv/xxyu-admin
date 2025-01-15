@@ -6,6 +6,7 @@ import './globals.css';
 import '../public/themes.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import ThemeWrapper from '@/components/theme/theme-wrapper';
+import { Toaster } from '@/components/ui/toaster';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -55,6 +56,7 @@ export default async function RootLayout({
             <ThemeWrapper>{children}</ThemeWrapper>
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Toaster />
       </body>
     </html>
   );
