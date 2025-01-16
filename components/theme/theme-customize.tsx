@@ -15,7 +15,7 @@ import { Check, Moon, Palette, Sun } from 'lucide-react';
 import ThemeWrapper from '@/components/theme/theme-wrapper';
 import { Label } from '@/components/ui/label';
 import { baseColors } from '@/constants/base-colors';
-import { useThemeConfig } from '@/hooks/useThemeConfig';
+import { useThemeConfig } from '@/hooks/use-theme-config';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';

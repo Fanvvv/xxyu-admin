@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useSidebar } from '@/hooks/useSidebar';
+import { useSidebar } from '@/hooks/use-sidebar';
 import DashboardNav from '@/components/dashboard-nav';
 import { NavItem } from '@/types';
 

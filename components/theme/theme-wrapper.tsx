@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { useThemeConfig } from '@/hooks/useThemeConfig';
+import { useThemeConfig } from '@/hooks/use-theme-config';
 
 interface ThemeWrapperProps extends React.ComponentProps<'div'> {
   defaultTheme?: string;
