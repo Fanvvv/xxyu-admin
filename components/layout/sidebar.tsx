@@ -19,15 +19,21 @@ export const navItems: NavItem[] = [
   },
   {
     title: 'User',
-    href: '/dashboard/user',
+    href: '/user',
     icon: 'user',
     label: 'user'
   },
   {
     title: 'Profile',
-    href: '/dashboard/profile',
+    href: '/profile',
     icon: 'profile',
     label: 'profile'
+  },
+  {
+    title: 'Music',
+    href: '/music',
+    icon: 'music',
+    label: 'music'
   },
   {
     title: 'Login',
