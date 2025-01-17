@@ -4,7 +4,11 @@ import {
   LucideIcon,
   User,
   User2Icon,
-  Music
+  Clapperboard,
+  Film,
+  Music,
+  Clover,
+  Image
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -14,5 +18,9 @@ export const Icons = {
   dashboard: LayoutDashboardIcon,
   user: User,
   profile: User2Icon,
-  music: Music
+  music: Music,
+  media: Clapperboard,
+  movie: Film,
+  image: Image,
+  logo: Clover
 };
