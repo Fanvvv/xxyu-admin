@@ -2,5 +2,13 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "Sidebar": {
+    "Group": "Group",
+    "Dashboard": "Dashboard",
+    "Media": "Media",
+    "Music": "Music",
+    "Movies": "Movies",
+    "Photo Album": "Photo Album"
   }
 }

@@ -2,5 +2,13 @@
   "HomePage": {
     "title": "嗨!",
     "about": "关于页"
+  },
+  "Sidebar": {
+    "Group": "分组",
+    "Dashboard": "首页",
+    "Media": "媒体",
+    "Music": "音乐",
+    "Movies": "电影",
+    "Photo Album": "相册"
   }
 }
