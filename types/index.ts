@@ -1,17 +1,16 @@
-import { LucideIcon } from 'lucide-react';
+import { Icons } from '@/components/icons';
+
+export * from './search-form';
+export * from './data-table';
 
 export interface NavItem {
   title: string;
-  url?: string;
+  url: string;
   disabled?: boolean;
   external?: boolean;
-  icon?: LucideIcon;
+  icon?: keyof typeof Icons;
   label?: string;
   description?: string;
-  hidden?: boolean;
   isActive?: boolean;
-  items?: {
-    title: string;
-    url: string;
-  }[];
+  items?: NavItem[];
 }

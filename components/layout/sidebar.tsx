@@ -1,40 +1,38 @@
+'use client';
+
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader
 } from '@/components/ui/sidebar';
-import { NavItem } from '@/types';
-import { LayoutDashboardIcon, Music } from 'lucide-react';
-import { NavMain } from '@/components/nav/nav-main';
 import { NavHeader } from '@/components/nav/nav-header';
+import { NavMain } from '@/components/nav/nav-main';
+import type { NavItem } from '@/types';
 
 export const navItems: NavItem[] = [
   {
     title: 'Dashboard',
     url: '/dashboard',
-    icon: LayoutDashboardIcon,
+    icon: 'dashboard',
     label: 'Dashboard',
-    items: [
-      {
-        title: 'Music',
-        url: '/music'
-      },
-      {
-        title: 'Music',
-        url: '/music'
-      }
-    ]
+    items: []
   },
   {
-    title: 'Music',
-    url: '/music',
-    icon: Music,
-    label: 'music',
+    title: 'Media',
+    url: '/media',
+    icon: 'media',
+    label: 'Media',
     items: [
       {
         title: 'Music',
-        url: '/music'
+        icon: 'music',
+        url: '/media/music'
+      },
+      {
+        title: 'Movies',
+        icon: 'movie',
+        url: '/media/movie'
       }
     ]
   }
