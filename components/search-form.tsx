@@ -23,6 +23,7 @@ import {
 import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { Label } from '@/components/ui/label';
 import type { SearchFormProps, SearchField } from '@/types';
+import { useCurrentLocale } from '@/hooks/use-current-locale';
 
 export function SearchForm({
   fields,
@@ -40,7 +41,7 @@ export function SearchForm({
   );
 
   const [values, setValues] = useState(initialValues);
-
+  const currentLocale = useCurrentLocale();
   // 防抖处理搜索
   const debouncedSearch = useDebouncedCallback(
     (searchValues: Record<string, any>) => {
@@ -107,7 +108,9 @@ export function SearchForm({
                 )}
               >
                 <Calendar className="mr-2 h-4 w-4" />
-                {value ? format(new Date(value), 'PPP') : field.placeholder}
+                {value
+                  ? format(new Date(value), 'yyyy-MM-dd')
+                  : field.placeholder}
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
@@ -118,6 +121,7 @@ export function SearchForm({
                   const dateStr = date ? format(date, 'yyyy-MM-dd') : '';
                   handleFieldChange(field.key, dateStr);
                 }}
+                locale={currentLocale}
                 initialFocus
               />
             </PopoverContent>
@@ -159,9 +163,7 @@ export function SearchForm({
           {renderField(field)}
         </div>
       ))}
-      <Button variant="outline" onClick={handleReset}>
-        重置
-      </Button>
+      <Button onClick={handleReset}>重置</Button>
     </div>
   );
 }
