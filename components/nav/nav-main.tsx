@@ -18,9 +18,9 @@ import {
 } from '@/components/ui/collapsible';
 import { ChevronRight } from 'lucide-react';
 import type { NavItem } from '@/types';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/navigation';
 import { Icons } from '@/components/icons';
 
 export function NavMain({ items }: { items: NavItem[] }) {
