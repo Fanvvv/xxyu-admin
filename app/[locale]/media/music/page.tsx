@@ -49,7 +49,7 @@ export default function MusicPage() {
   };
 
   return (
-    <PageContainer scrollable={true}>
+    <PageContainer scrollable={false}>
       <div className="flex flex-1 flex-col space-y-4">
         <div className="flex items-start justify-between">
           <Heading title="test" description="test" />
@@ -59,22 +59,20 @@ export default function MusicPage() {
           onSearch={handleSearch}
           onReset={() => console.log('重置')}
         />
-        <div className="p-4">
-          <DataTable
-            columns={columns}
-            dataSource={dataSource}
-            rowKey="id"
-            showSelection
-            selectedRows={selectedRows}
-            onSelectionChange={setSelectedRows}
-            pagination={{
-              ...pagination,
-              onChange: handlePageChange
-            }}
-            loading={false}
-            className="space-y-4"
-          />
-        </div>
+        <DataTable
+          columns={columns}
+          dataSource={dataSource}
+          rowKey="id"
+          showSelection
+          selectedRows={selectedRows}
+          onSelectionChange={setSelectedRows}
+          pagination={{
+            ...pagination,
+            onChange: handlePageChange
+          }}
+          loading={false}
+          className="space-y-4"
+        />
       </div>
     </PageContainer>
   );

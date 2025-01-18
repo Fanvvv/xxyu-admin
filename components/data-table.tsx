@@ -31,6 +31,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { ArrowUpDown, Loader2 } from 'lucide-react';
 import type { DataTableProps } from '@/types';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 export function DataTable<T extends object>({
   columns,
@@ -133,70 +134,73 @@ export function DataTable<T extends object>({
   }, [rowSelection, onSelectionChange, table]);
 
   return (
-    <div className={className}>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead
-                    key={header.id}
-                    style={{ width: columns[header.index]?.width }}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
+    <div className="flex flex-1 flex-col space-y-4">
+      <div className="relative flex flex-1">
+        <div className="absolute bottom-0 left-0 right-0 top-0 flex overflow-scroll rounded-md border md:overflow-auto">
+          <ScrollArea className="flex-1">
+            <Table className="relative">
+              <TableHeader>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <TableRow key={headerGroup.id}>
+                    {headerGroup.headers.map((header) => (
+                      <TableHead
+                        key={header.id}
+                        style={{ width: columns[header.index]?.width }}
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    ))}
+                  </TableRow>
                 ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {loading ? (
-              <TableRow>
-                <TableCell
-                  colSpan={tableColumns.length}
-                  className="h-24 text-center"
-                >
-                  <Loader2 className="mx-auto h-6 w-6 animate-spin" />
-                </TableCell>
-              </TableRow>
-            ) : table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.getValue(rowKey as string)}
-                  data-state={row.getIsSelected() && 'selected'}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+              </TableHeader>
+              <TableBody>
+                {loading ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={tableColumns.length}
+                      className="h-24 text-center"
+                    >
+                      <Loader2 className="mx-auto h-6 w-6 animate-spin" />
                     </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={tableColumns.length}
-                  className="h-24 text-center"
-                >
-                  暂无数据
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+                  </TableRow>
+                ) : table.getRowModel().rows?.length ? (
+                  table.getRowModel().rows.map((row) => (
+                    <TableRow
+                      key={row.getValue(rowKey as string)}
+                      data-state={row.getIsSelected() && 'selected'}
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <TableCell key={cell.id}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell
+                      colSpan={tableColumns.length}
+                      className="h-24 text-center"
+                    >
+                      暂无数据
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </ScrollArea>
+        </div>
       </div>
-
       {pagination && (
-        <div className="flex items-center justify-between space-x-2 py-4">
+        <div className="flex flex-col items-center justify-between gap-2 space-x-2 py-2 sm:flex-row">
           <div className="flex items-center space-x-2">
             <p className="text-sm font-medium">每页显示</p>
             <Select

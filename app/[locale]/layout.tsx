@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar';
 import Header from '@/components/layout/header';
 
@@ -14,12 +14,12 @@ export default async function LocaleLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider className="flex">
+    <SidebarProvider className="bg-background text-foreground">
       <AppSidebar />
-      <main className="w-full flex-1 overflow-hidden">
+      <SidebarInset>
         <Header />
         {children}
-      </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 }
