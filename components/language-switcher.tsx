@@ -1,7 +1,6 @@
 'use client';
 
 import { useTransition } from 'react';
-import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { usePathname, useRouter, locales } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
@@ -24,7 +23,6 @@ const localesNames: localesItem[] = [
 ];
 
 export default function LanguageSwitcher() {
-  const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
@@ -32,7 +30,6 @@ export default function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
 
   const handleLocaleChange = (newLocale: localesItem['value']) => {
-    console.log(newLocale);
     startTransition(() => {
       // @ts-expect-error
       router.replace({ pathname, params }, { locale: newLocale });

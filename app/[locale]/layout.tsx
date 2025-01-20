@@ -12,21 +12,17 @@ type Props = {
 export async function generateMetadata({
   params: { locale }
 }: Omit<Props, 'children'>): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'HomePage' });
-
+  const t = await getTranslations({ locale, namespace: 'MetaData' });
   return {
-    title: t('title'),
-    description: t('about')
+    title: t(`Default.title`),
+    description: t(`Default.description`)
   };
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params: { locale }
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+}: Props) {
   // Providing all messages to the client
   // side is the easiest way to get started
   if (!routing.locales.includes(locale as any)) {

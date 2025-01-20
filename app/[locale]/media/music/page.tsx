@@ -7,8 +7,11 @@ import { SearchForm } from '@/components/search-form';
 import { DataTable } from '@/components/data-table';
 
 import { searchFields, createColumns, type TableActions } from './page-config';
+import useSeoMeta from '@/hooks/use-seo-meta';
 
 export default function MusicPage() {
+  useSeoMeta('Music');
+
   const handleSearch = (values: Record<string, any>) => {
     console.log('搜索参数：', values);
     // 执行搜索逻辑

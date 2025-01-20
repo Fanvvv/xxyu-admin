@@ -23,27 +23,10 @@ const geistMono = localFont({
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  locale: string;
 };
 
-export async function generateMetadata({
-  params: { locale }
-}: Omit<Props, 'children'>): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: 'HomePage' });
-
-  return {
-    title: t('title'),
-    description: t('description')
-  };
-}
-
-export default async function BaseLayout({
-  children,
-  locale
-}: {
-  children: React.ReactNode;
-  locale: string;
-}) {
+export default async function BaseLayout({ children, locale }: Props) {
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
