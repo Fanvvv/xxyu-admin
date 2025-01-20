@@ -1,4 +1,43 @@
 {
+  "MetaData": {
+    "Default": {
+      "title": "管理系统",
+      "description": "管理系统"
+    },
+    "Dashboard": {
+      "title": "首页",
+      "description": "首页"
+    },
+    "Music": {
+      "title": "音乐",
+      "description": "音乐页"
+    },
+    "Movie": {
+      "title": "电影",
+      "description": "电影页"
+    }
+  },
+  "Login": {
+    "title": "欢迎使用管理系统",
+    "description": "请登录您的账户",
+    "username": "用户名",
+    "password": "密码",
+    "placeholder": {
+      "username": "请输入用户名",
+      "password": "请输入密码"
+    },
+    "button": "登录",
+    "loading": "登录中...",
+    "success": "登录成功",
+    "redirecting": "正在跳转...",
+    "error": "登录失败",
+    "checkUsernameAndPassword": "请检查用户名和密码",
+    "serverError": "服务器错误，请稍后重试"
+  },
+  "Auth": {
+    "Logout": "退出登录",
+    "LogoutSuccess": "退出登录成功"
+  },
   "HomePage": {
     "title": "嗨!",
     "description": "描述"
@@ -9,6 +48,14 @@
     "Media": "媒体",
     "Music": "音乐",
     "Movies": "电影",
-    "Photo Album": "相册"
+    "Photo Album": "相册",
+    "Logout": "退出登录"
+  },
+  "Theme": {
+    "Color": "颜色",
+    "Light": "亮色",
+    "Dark": "暗色",
+    "Radius": "圆角",
+    "Mode": "模式"
   }
 }

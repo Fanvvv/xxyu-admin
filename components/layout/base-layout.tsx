@@ -1,14 +1,10 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
-import type { Metadata } from 'next';
+import { getMessages } from 'next-intl/server';
 import localFont from 'next/font/local';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import ThemeWrapper from '@/components/theme/theme-wrapper';
 import { Toaster } from '@/components/ui/toaster';
-
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/layout/sidebar';
-import Header from '@/components/layout/header';
+import SidebarLayout from '@/components/layout/sidebar-layout';
 
 const geistSans = localFont({
   src: '../../app/fonts/GeistVF.woff',
@@ -24,9 +20,14 @@ const geistMono = localFont({
 type Props = {
   children: React.ReactNode;
   locale: string;
+  sidebar?: boolean;
 };
 
-export default async function BaseLayout({ children, locale }: Props) {
+export default async function BaseLayout({
+  children,
+  locale,
+  sidebar = true
+}: Props) {
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -36,13 +37,7 @@ export default async function BaseLayout({ children, locale }: Props) {
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="light">
             <ThemeWrapper>
-              <SidebarProvider className="bg-background text-foreground">
-                <AppSidebar />
-                <SidebarInset>
-                  <Header />
-                  {children}
-                </SidebarInset>
-              </SidebarProvider>
+              {sidebar ? <SidebarLayout>{children}</SidebarLayout> : children}
             </ThemeWrapper>
           </ThemeProvider>
         </NextIntlClientProvider>

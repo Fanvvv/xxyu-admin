@@ -1,4 +1,47 @@
 {
+  "MetaData": {
+    "Default": {
+      "title": "Management System",
+      "description": "Management System"
+    },
+    "Login": {
+      "title": "Login",
+      "description": "Login page"
+    },
+    "Dashboard": {
+      "title": "Dashboard",
+      "description": "Dashboard page"
+    },
+    "Music": {
+      "title": "Music",
+      "description": "Music page"
+    },
+    "Movie": {
+      "title": "Movie",
+      "description": "Movie page"
+    }
+  },
+  "Login": {
+    "title": "Welcome to Management System",
+    "description": "Please login to your account",
+    "username": "Username",
+    "password": "Password",
+    "placeholder": {
+      "username": "Please enter your username",
+      "password": "Please enter your password"
+    },
+    "button": "Login",
+    "loading": "Logging in...",
+    "success": "Login successful",
+    "redirecting": "Redirecting to dashboard...",
+    "error": "Login failed",
+    "checkUsernameAndPassword": "Please check your username and password",
+    "serverError": "Server error, please try again later"
+  },
+  "Auth": {
+    "Logout": "Log out",
+    "LogoutSuccess": "Logout successful"
+  },
   "HomePage": {
     "title": "Hello world!",
     "description": "Go to the about page"
@@ -9,6 +52,14 @@
     "Media": "Media",
     "Music": "Music",
     "Movies": "Movies",
-    "Photo Album": "Photo Album"
+    "Photo Album": "Photo Album",
+    "Logout": "Log out"
+  },
+  "Theme": {
+    "Color": "Color",
+    "Light": "Light",
+    "Dark": "Dark",
+    "Radius": "Radius",
+    "Mode": "Mode"
   }
 }

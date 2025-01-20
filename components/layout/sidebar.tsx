@@ -8,9 +8,15 @@ import {
 } from '@/components/ui/sidebar';
 import { NavHeader } from '@/components/nav/nav-header';
 import { NavMain } from '@/components/nav/nav-main';
+import { NavFooter } from '@/components/nav/nav-footer';
 import { navItems } from '@/constants/sidebar-nav';
 
 export function AppSidebar() {
+  const user = {
+    name: 'shadcn',
+    email: 'm@example.com',
+    avatar: ''
+  };
   return (
     <Sidebar collapsible="icon" className="bg-background">
       <SidebarHeader>
@@ -19,7 +25,9 @@ export function AppSidebar() {
       <SidebarContent>
         <NavMain items={navItems} />
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <NavFooter user={user} />
+      </SidebarFooter>
     </Sidebar>
   );
 }
