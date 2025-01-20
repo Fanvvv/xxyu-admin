@@ -40,7 +40,7 @@ export const navItems: NavItem[] = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="bg-background">
       <SidebarHeader>
         <NavHeader />
       </SidebarHeader>

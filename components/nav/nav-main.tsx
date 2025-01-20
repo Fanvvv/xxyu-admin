@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/collapsible';
 import { ChevronRight } from 'lucide-react';
 import type { NavItem } from '@/types';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/navigation';
 import { Icons } from '@/components/icons';

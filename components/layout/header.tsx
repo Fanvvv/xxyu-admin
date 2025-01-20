@@ -1,5 +1,6 @@
 import React from 'react';
 import ThemeCustomize from '@/components/theme/theme-customize';
+import LanguageSwitcher from '@/components/language-switcher';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 
 const Header = () => {
@@ -8,7 +9,8 @@ const Header = () => {
       <div className="flex items-center">
         <SidebarTrigger className="-ml-1" />
       </div>
-      <div>
+      <div className="flex items-center gap-2">
+        <LanguageSwitcher />
         <ThemeCustomize />
       </div>
     </header>

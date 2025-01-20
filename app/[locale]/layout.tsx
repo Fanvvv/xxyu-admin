@@ -1,25 +1,39 @@
-import { Metadata } from 'next';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { AppSidebar } from '@/components/layout/sidebar';
-import Header from '@/components/layout/header';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { routing } from '@/i18n/navigation';
+import { notFound } from 'next/navigation';
+import BaseLayout from '@/components/layout/base-layout';
 
-export const metadata: Metadata = {
-  title: 'next页面',
-  description: 'Next.js and Shadcn'
+type Props = {
+  children: React.ReactNode;
+  params: { locale: string };
 };
 
-export default async function LocaleLayout({
-  children
+export async function generateMetadata({
+  params: { locale }
+}: Omit<Props, 'children'>): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'HomePage' });
+
+  return {
+    title: t('title'),
+    description: t('about')
+  };
+}
+
+export default async function RootLayout({
+  children,
+  params: { locale }
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
-  return (
-    <SidebarProvider className="bg-background text-foreground">
-      <AppSidebar />
-      <SidebarInset>
-        <Header />
-        {children}
-      </SidebarInset>
-    </SidebarProvider>
-  );
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+  return <BaseLayout locale={locale}>{children}</BaseLayout>;
 }

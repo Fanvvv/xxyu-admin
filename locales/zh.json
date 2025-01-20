@@ -1,7 +1,7 @@
 {
   "HomePage": {
     "title": "嗨!",
-    "about": "关于页"
+    "description": "描述"
   },
   "Sidebar": {
     "Group": "分组",
