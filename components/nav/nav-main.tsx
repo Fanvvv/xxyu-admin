@@ -22,11 +22,31 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/i18n/navigation';
 import { Icons } from '@/components/icons';
+import { useState, useEffect } from 'react';
 
 export function NavMain({ items }: { items: NavItem[] }) {
   const t = useTranslations('Sidebar');
   const pathname = usePathname();
   const { state, isMobile } = useSidebar();
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
+    {}
+  );
+
+  // 在组件加载时从 localStorage 读取展开状态
+  useEffect(() => {
+    const savedState = localStorage.getItem('sidebarExpandedState');
+
+    if (savedState) {
+      setExpandedItems(JSON.parse(savedState));
+    }
+  }, []);
+
+  // 处理Collapsible的展开状态
+  const handleCollapsibleChange = (title: string, isOpen: boolean) => {
+    const newState = { ...expandedItems, [title]: isOpen };
+    setExpandedItems(newState);
+    localStorage.setItem('sidebarExpandedState', JSON.stringify(newState));
+  };
 
   return (
     <SidebarGroup>
@@ -38,7 +58,11 @@ export function NavMain({ items }: { items: NavItem[] }) {
             <Collapsible
               key={t(item.title)}
               asChild
-              defaultOpen={item.isActive}
+              open={expandedItems[item.title]}
+              defaultOpen={expandedItems[item.title] || item.isActive}
+              onOpenChange={(isOpen) =>
+                handleCollapsibleChange(item.title, isOpen)
+              }
               className="group/collapsible"
             >
               <SidebarMenuItem>
