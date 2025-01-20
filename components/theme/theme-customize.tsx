@@ -19,6 +19,7 @@ import { useThemeConfig } from '@/hooks/use-theme-config';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
+import { useTranslations } from 'next-intl';
 
 const ThemeCustomize = () => {
   return (
@@ -60,6 +61,7 @@ function Customizer() {
   React.useEffect(() => {
     setMounted(true);
   }, []);
+  const t = useTranslations('Theme');
   return (
     <ThemeWrapper
       defaultTheme="zinc"
@@ -67,7 +69,7 @@ function Customizer() {
     >
       <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
         <div className="space-y-1.5">
-          <Label className="text-xs">Color</Label>
+          <Label className="text-xs">{t('Color')}</Label>
           <div className={'grid grid-cols-3 gap-2'}>
             {baseColors.map((theme) => {
               const isActive = config.theme === theme.name;
@@ -107,7 +109,7 @@ function Customizer() {
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label className="text-xs">Radius</Label>
+          <Label className="text-xs">{t('Radius')}</Label>
           <div className="grid grid-cols-5 gap-2">
             {['0', '0.3', '0.5', '0.75', '1.0'].map((value) => {
               return (
@@ -130,7 +132,7 @@ function Customizer() {
           </div>
         </div>
         <div className="space-y-1.5">
-          <Label className="text-xs">Mode</Label>
+          <Label className="text-xs">{t('Mode')}</Label>
           <div className="grid grid-cols-3 gap-2">
             {mounted ? (
               <>
@@ -141,7 +143,7 @@ function Customizer() {
                   className={cn(mode === 'light' && 'border-2 border-primary')}
                 >
                   <Sun className="mr-1 -translate-x-1" />
-                  Light
+                  {t('Light')}
                 </Button>
                 <Button
                   variant={'outline'}
@@ -150,7 +152,7 @@ function Customizer() {
                   className={cn(mode === 'dark' && 'border-2 border-primary')}
                 >
                   <Moon className="mr-1 -translate-x-1" />
-                  Dark
+                  {t('Dark')}
                 </Button>
               </>
             ) : (
