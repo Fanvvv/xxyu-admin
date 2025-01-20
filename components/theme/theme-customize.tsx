@@ -26,7 +26,7 @@ const ThemeCustomize = () => {
     <div>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button size="sm" className="md:hidden">
+          <Button variant="ghost" size="sm" className="md:hidden">
             <Palette />
           </Button>
         </DrawerTrigger>
