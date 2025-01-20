@@ -8,35 +8,7 @@ import {
 } from '@/components/ui/sidebar';
 import { NavHeader } from '@/components/nav/nav-header';
 import { NavMain } from '@/components/nav/nav-main';
-import type { NavItem } from '@/types';
-
-export const navItems: NavItem[] = [
-  {
-    title: 'Dashboard',
-    url: '/dashboard',
-    icon: 'dashboard',
-    label: 'Dashboard',
-    items: []
-  },
-  {
-    title: 'Media',
-    url: '/media',
-    icon: 'media',
-    label: 'Media',
-    items: [
-      {
-        title: 'Music',
-        icon: 'music',
-        url: '/media/music'
-      },
-      {
-        title: 'Movies',
-        icon: 'movie',
-        url: '/media/movie'
-      }
-    ]
-  }
-];
+import { navItems } from '@/constants/sidebar-nav';
 
 export function AppSidebar() {
   return (
