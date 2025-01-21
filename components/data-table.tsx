@@ -29,9 +29,10 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { ArrowUpDown, Loader2 } from 'lucide-react';
+import { ArrowUpDown, Loader2, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { DataTableProps } from '@/types';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useTranslations } from 'next-intl';
 
 export function DataTable<T extends object>({
   columns,
@@ -41,11 +42,18 @@ export function DataTable<T extends object>({
   showSelection = false,
   selectedRows = [],
   onSelectionChange,
-  pagination,
+  pagination = {
+    current: 1,
+    pageSize: 10,
+    total: 0,
+    pageSizes: [10, 20, 30, 40, 50],
+    onChange: () => {}
+  },
   className
 }: DataTableProps<T>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [rowSelection, setRowSelection] = React.useState({});
+  const t = useTranslations('DataTable');
 
   // 构建表格列配置
   const tableColumns = React.useMemo<ColumnDef<T>[]>(() => {
@@ -190,7 +198,7 @@ export function DataTable<T extends object>({
                       colSpan={tableColumns.length}
                       className="h-24 text-center"
                     >
-                      暂无数据
+                      {t('NoData')}
                     </TableCell>
                   </TableRow>
                 )}
@@ -202,7 +210,10 @@ export function DataTable<T extends object>({
       {pagination && (
         <div className="flex flex-col items-center justify-between gap-2 space-x-2 py-2 sm:flex-row">
           <div className="flex items-center space-x-2">
-            <p className="text-sm font-medium">每页显示</p>
+            <p className="text-sm font-medium">
+              {t('Total', { total: pagination.total })}
+            </p>
+            <p className="text-sm font-medium">{t('Page')}</p>
             <Select
               value={String(pagination.pageSize)}
               onValueChange={(value) => pagination.onChange(1, Number(value))}
@@ -211,7 +222,7 @@ export function DataTable<T extends object>({
                 <SelectValue placeholder={pagination.pageSize} />
               </SelectTrigger>
               <SelectContent side="top">
-                {[10, 20, 30, 40, 50].map((pageSize) => (
+                {pagination.pageSizes.map((pageSize) => (
                   <SelectItem key={pageSize} value={String(pageSize)}>
                     {pageSize}
                   </SelectItem>
@@ -228,14 +239,17 @@ export function DataTable<T extends object>({
               }
               disabled={pagination.current === 1}
             >
-              上一页
+              {/* {t('PreviousPage')} */}
+              <ChevronLeft className="h-4 w-4" />
             </Button>
             <div className="flex items-center space-x-2">
               <span className="text-sm font-medium">
-                第 {pagination.current} 页
+                {t('CurrentPage', { current: pagination.current })}
               </span>
               <span className="text-sm font-medium">
-                共 {Math.ceil(pagination.total / pagination.pageSize)} 页
+                {t('PageCount', {
+                  total: Math.ceil(pagination.total / pagination.pageSize)
+                })}
               </span>
             </div>
             <Button
@@ -248,7 +262,8 @@ export function DataTable<T extends object>({
                 pagination.current * pagination.pageSize >= pagination.total
               }
             >
-              下一页
+              {/* {t('NextPage')} */}
+              <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         </div>

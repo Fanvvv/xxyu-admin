@@ -19,6 +19,7 @@ export interface DataTableProps<T> {
     current: number;
     pageSize: number;
     total: number;
+    pageSizes: number[];
     onChange: (page: number, pageSize: number) => void;
   };
   className?: string;
