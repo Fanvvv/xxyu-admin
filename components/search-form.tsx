@@ -24,13 +24,18 @@ import { Calendar as CalendarComponent } from '@/components/ui/calendar';
 import { Label } from '@/components/ui/label';
 import type { SearchFormProps, SearchField } from '@/types';
 import { useCurrentLocale } from '@/hooks/use-current-locale';
+import { RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function SearchForm({
   fields,
+  showLabel = false,
   onSearch,
   onReset,
-  className
+  className,
+  children
 }: SearchFormProps) {
+  const t = useTranslations('SearchForm');
   // 初始化表单状态
   const initialValues = fields.reduce(
     (acc, field) => {
@@ -156,14 +161,28 @@ export function SearchForm({
   };
 
   return (
-    <div className={cn('flex flex-wrap gap-4', className)}>
+    <div className={cn('flex flex-wrap items-center gap-4', className)}>
       {fields.map((field) => (
         <div key={field.key} className="flex items-center gap-2">
-          <Label className="w-20 text-right">{field.label}</Label>
+          {showLabel && (
+            <Label className="w-20 text-right">{field.label}</Label>
+          )}
           {renderField(field)}
         </div>
       ))}
-      <Button onClick={handleReset}>重置</Button>
+      {children}
+      {onReset && (
+        <Button
+          onClick={handleReset}
+          variant="outline"
+          size="icon"
+          className="h-8 w-8 rounded-full"
+          aria-label={t('Reset')}
+          title={t('Reset')}
+        >
+          <RotateCcw className="h-4 w-4" />
+        </Button>
+      )}
     </div>
   );
 }
