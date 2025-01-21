@@ -57,5 +57,36 @@
     "Dark": "暗色",
     "Radius": "圆角",
     "Mode": "模式"
+  },
+  "SearchForm": {
+    "Reset": "重置",
+    "Add": "添加"
+  },
+  "DataTable": {
+    "NoData": "暂无数据",
+    "Page": "每页显示",
+    "CurrentPage": "第 {current} 页",
+    "PageCount": "共 {total} 页",
+    "PreviousPage": "上一页",
+    "NextPage": "下一页",
+    "FirstPage": "第一页",
+    "LastPage": "最后一页",
+    "Total": "共 {total} 条"
+  },
+  "FileUploader": {
+    "drop": "将文件拖放到此处",
+    "dropzone": "将文件拖放到此处或点击上传",
+    "onlyOneFile": "一次只能上传一个文件",
+    "limitFileCount": "一次最多上传 {count} 个文件",
+    "limitFileSize": "文件大小超过 {size} MB 的限制",
+    "limitFileTypes": "文件类型不支持",
+    "fileRejected": "文件 {name} 被拒绝",
+    "uploading": "正在上传 {count} 个文件...",
+    "uploadFailed": "{count} 个文件上传失败",
+    "uploadSuccess": "{count} 个文件上传成功",
+    "uploadCancel": "上传取消"
+  },
+  "Music": {
+    "Add": "新增"
   }
 }

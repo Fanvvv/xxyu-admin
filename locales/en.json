@@ -61,5 +61,36 @@
     "Dark": "Dark",
     "Radius": "Radius",
     "Mode": "Mode"
+  },
+  "SearchForm": {
+    "Reset": "Reset",
+    "Add": "Add"
+  },
+  "DataTable": {
+    "NoData": "No data",
+    "Page": "Rows per page",
+    "CurrentPage": "Page {current}",
+    "PageCount": "of {total}",
+    "PreviousPage": "Previous",
+    "NextPage": "Next",
+    "FirstPage": "First",
+    "LastPage": "Last",
+    "Total": "Total {total} rows"
+  },
+  "FileUploader": {
+    "drop": "Drop the files here",
+    "dropzone": "Drop the files here or click to upload",
+    "onlyOneFile": "Cannot upload more than 1 file at a time",
+    "limitFileCount": "Cannot upload more than {count} files",
+    "limitFileSize": "File size exceeds the limit of {size} MB",
+    "limitFileTypes": "File type is not supported",
+    "fileRejected": "File {name} was rejected",
+    "uploading": "Uploading {count} files...",
+    "uploadFailed": "Failed to upload {count} files",
+    "uploadSuccess": "{count} files uploaded ",
+    "uploadCancel": "Upload canceled"
+  },
+  "Music": {
+    "Add": "Add"
   }
 }
