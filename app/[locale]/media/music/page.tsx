@@ -5,12 +5,16 @@ import { PageContainer } from '@/components/page-container';
 import { Heading } from '@/components/ui/heading';
 import { SearchForm } from '@/components/search-form';
 import { DataTable } from '@/components/data-table';
-
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 import { searchFields, createColumns, type TableActions } from './page-config';
 import useSeoMeta from '@/hooks/use-seo-meta';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 export default function MusicPage() {
   useSeoMeta('Music');
+  const router = useRouter();
 
   const handleSearch = (values: Record<string, any>) => {
     console.log('搜索参数：', values);
@@ -40,7 +44,8 @@ export default function MusicPage() {
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
-    total: 100
+    total: 100,
+    pageSizes: [10, 20, 30, 40, 50]
   });
   const handlePageChange = (page: number, pageSize: number) => {
     setPagination((prev) => ({
@@ -49,6 +54,11 @@ export default function MusicPage() {
       pageSize
     }));
     // 加载数据
+  };
+
+  const t = useTranslations('Music');
+  const handleAdd = () => {
+    router.push('/media/music/new');
   };
 
   return (
@@ -61,7 +71,18 @@ export default function MusicPage() {
           fields={searchFields}
           onSearch={handleSearch}
           onReset={() => console.log('重置')}
-        />
+        >
+          <Button
+            onClick={handleAdd}
+            variant="outline"
+            size="icon"
+            className="h-8 w-8 rounded-full"
+            aria-label={t('Add')}
+            title={t('Add')}
+          >
+            <Plus className="h-4 w-4" />
+          </Button>
+        </SearchForm>
         <DataTable
           columns={columns}
           dataSource={dataSource}
