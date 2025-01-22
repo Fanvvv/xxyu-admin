@@ -22,7 +22,13 @@ export interface SearchField {
 
 export interface SearchFormProps {
   fields: SearchField[];
+  /**
+   * 是否显示 label
+   * @default false
+   */
+  showLabel?: boolean;
   onSearch: (values: Record<string, any>) => void;
   onReset?: () => void;
   className?: string;
+  children?: React.ReactNode;
 }

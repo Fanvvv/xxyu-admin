@@ -2,6 +2,7 @@ import { Icons } from '@/components/icons';
 
 export * from './search-form';
 export * from './data-table';
+export * from './submit-form';
 
 export interface NavItem {
   title: string;
